@@ -11,7 +11,7 @@ from pingtop.widgets.trend import render_detailed_trend_graph
 
 class DetailsPanel(Static):
     DEFAULT_MESSAGE = "Select a host to inspect live statistics."
-    COLUMN_GAP = 4
+    COLUMN_GAP = 2
 
     def show_host(self, row: dict[str, object] | None) -> None:
         if row is None:
