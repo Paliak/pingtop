@@ -33,8 +33,8 @@ class DetailsPanel(Static):
     def _graph_width(self, left_width: int) -> int:
         if self.size.width <= 0:
             return 32
-        available = self.size.width - left_width - self.COLUMN_GAP - 8
-        return max(16, min(pingtop.models.MAX_HISTORY, available))
+        available = self.size.width // 3 * 3 - left_width - self.COLUMN_GAP - 8
+        return max(8, min(pingtop.models.MAX_HISTORY, available))
 
     def _left_column_lines(self, row: dict[str, object]) -> list[str]:
         lines = [
