@@ -12,7 +12,6 @@ from pingtop.widgets.trend import render_detailed_trend_graph
 class DetailsPanel(Static):
     DEFAULT_MESSAGE = "Select a host to inspect live statistics."
     COLUMN_GAP = 4
-    LEFT_COLUMN_MAX_WIDTH = 30
 
     def show_host(self, row: dict[str, object] | None) -> None:
         if row is None:
@@ -60,7 +59,7 @@ class DetailsPanel(Static):
     def _left_column_width(self, lines: list[str]) -> int:
         if not lines:
             return 0
-        return min(self.LEFT_COLUMN_MAX_WIDTH, max(len(line) for line in lines))
+        return max(len(line) for line in lines)
 
     def _compose_columns(
         self, left_lines: list[str], right_lines: list[Text], left_width: int
