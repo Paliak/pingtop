@@ -133,6 +133,7 @@ class IcmpEngine:
         icmp_proto = socket.getprotobyname("icmp")
         packet_id = None
         RTT = None
+        sock = None
         try:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_RAW, icmp_proto)
@@ -152,7 +153,8 @@ class IcmpEngine:
         except OSError as exc:
             return PingResult(success=False, resolved_ip=resolved_ip, error_message=str(exc))
         finally:
-            sock.close()
+            if sock is not None:
+                sock.close()
 
         if RTT is None:
             return PingResult(success=False, resolved_ip=resolved_ip)
